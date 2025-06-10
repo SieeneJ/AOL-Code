@@ -1,0 +1,213 @@
+.post-container {
+    max-width: 100%;
+    min-width: 100%;
+    max-height: 100%;
+    margin-right: 2.5vw;
+    display: flex;
+    flex-direction: column;
+    padding: 1vh 0vh 1vh 0vh;
+}
+
+.recipe-container {
+    background-color: #ffe4e4;
+    padding: 5vh;
+    border-radius: 50px;
+    box-shadow: 0px 3px 5px #B39797;
+    overflow-x: hidden;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    scrollbar-width: none;
+}
+
+.recipe-container::-webkit-scrollbar{
+    display: none;
+}
+
+.title-container {
+    max-width: 100%;
+    background-color: #D72638;
+    padding: 20px 20px 20px 40px;
+    border-radius: 100px;
+}
+
+.recipe-title{
+    font-size: 30px;
+    color: #FFFFFF;
+    font-weight: 500;
+}
+
+.howto-video{
+    padding-top: 4vh;
+}
+
+.howto-video video{
+    max-width: 20vw;
+}
+
+.ingrehowto-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 4%;
+    padding-left: 2vh;
+}
+
+.ingredient-wrap{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.ingredients{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    min-width: 100%;
+    max-width: 100%;
+    gap: 5%;
+}
+
+.ingredient-wrap .title{
+    margin-top: 20px;
+    font-size: 20px;
+    color: #B01130;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.ingre-list{
+    display: flex;
+    justify-content: space-between;
+}
+
+.ingre-name, .ingre-amt{
+    font-size: 12px;
+    line-height: 22px;
+    color: #B01130;
+}
+
+.ingre-name{
+    max-width: 70%;
+}
+
+.howto-side{
+    padding-top: 4vh;
+    max-width: 70%;
+}
+
+.howto-list{
+    font-size: 14px;
+    line-height: 25px;
+}
+
+.video-story {
+    /* border: 1px solid #B11131; */
+    max-width: 100%;
+    min-height: 27.5%;
+    overflow-x: auto;
+    overflow-y: visible;
+    display: flex;
+    gap: 1vw;
+    scroll-snap-type: x mandatory;
+    /* enables snapping behavior */
+    -webkit-overflow-scrolling: touch;
+    /* smooth scroll on mobile */
+    scrollbar-width: none;
+    /* hide scrollbar (Firefox) */
+    cursor: grab;
+    user-select: none;
+    scroll-behavior: smooth;
+    white-space: nowrap;
+    padding: 1vh;
+    /* Important fallback */
+    border-radius: 40px 40px 40px 10px;
+}
+
+.video-story.dragging {
+    cursor: grabbing;
+}
+
+.video-story::-webkit-scrollbar {
+    display: none;
+}
+
+.video-story video {
+    height: 100%;
+}
+
+.column {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    height: auto;
+    position: relative;
+    /* border: 1px solid #FF9B22; */
+}
+
+.video-card {
+    /* I want this to be like a card that can overflow from it's container */
+    top: 0;
+    left: 0;
+    flex: 0 0 auto;
+    padding: 0;
+    /* prevent shrinking and define fixed width */
+    scroll-snap-align: start;
+    width: 9vw;
+    height: 100%;
+    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRuTZhOBJZHQms_ovBwF6qCUuaWpz6cvIgvpw&s");
+    background-size: cover;
+    background-position: center;
+    border-radius: 40px 40px 40px 10px;
+    box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.7);
+    position: relative;
+    overflow: hidden;
+}
+
+.video-card::before {
+    border-radius: 40px 40px 40px 10px;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    /* Start invisible */
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    /* Prevent blocking clicks */
+    z-index: 2000;
+}
+
+.video-card:hover::before {
+    opacity: 1;
+}
+
+.video-card:hover {
+    top: -0.5vh;
+    /* left: -0.2vh; */
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.7);
+}
+
+.video-card video{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: relative;
+}
+
+.howto-side ol li {
+    color: #B01130;
+    font-size: 12px;
+}
+
+.ingredient-side{
+    width: auto;
+}
+
+.howto-side .title{
+    color: #B01130;
+    padding: 0vh 2vh 0vh 2vh;
+}

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Azeret+Mono:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.lineicons.com/5.0/lineicons.css" />
+    <script src="https://kit.fontawesome.com/4a0f595e83.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="CSS/component.css">
+    <link rel="stylesheet" href="CSS/RecipeofTheDay.css">
+    <title>Eatscapade</title>
+</head>
+
+<body>
+    <!-- for video status -->
+    <div class="pop-up video">
+        <div class="popUp-container landscape">
+            <i class="fa-solid fa-xmark" onclick="closeVideo()"></i>
+            <video src="Assets/navbar/video.mp4" controls></video>
+        </div>
+    </div>
+    <div class="pop-up add-post">
+        <div class="create-post-container landscape">
+            <div class="form">
+                <div class="form-header">
+                    <i class="fa-solid fa-xmark" onclick="closeAddPost()"></i>
+                    <p class="form-title">Create Post</p>
+                </div>
+                <div class="form-input">
+                    <div class="form-top">
+                        <input type="text" class="inputTitle" id="postTitle" placeholder="Title of your post"></input>
+                        <textarea class="inputText" id="postDescription" placeholder="What's on your mind?"></textarea>
+                    </div>
+                    <div class="form-bottom">
+                        <div class="row" id="top-row">
+                            <div class="location-tag">
+                                <div class="add-location">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                    <p class="location">
+                                        Add Location
+                                    </p>
+                                </div>
+                                <div class="tag-people">
+                                    <i class="fa fa-user"></i>
+                                    <p class="tag">
+                                        Tag People
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="rating-stars">
+                                <span class="far fa-star star" data-value="1" onclick="starRating(1)"></span>
+                                <span class="far fa-star star" data-value="2" onclick="starRating(2)"></span>
+                                <span class="far fa-star star" data-value="3" onclick="starRating(3)"></span>
+                                <span class="far fa-star star" data-value="4" onclick="starRating(4)"></span>
+                                <span class="far fa-star star" data-value="5" onclick="starRating(5)"></span>
+                            </div>
+                        </div>
+                        <div class="row" id="bottom-row">
+                            <div class="input-icons">
+                                <input type="file" id="mediaFiles" name="mediaFiles" accept="image/*" multiple aria-describedby="mediaHelp"></input>
+                                <button type="button" class="upload-btn" id="imageUploadButton">
+                                    <i class="fa-solid fa-image"></i>
+                                </button>
+                            </div>
+                            <input type="button" value="Post" class="input-btn" onclick="submitNewPost()">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="content">
+        <div class="side-left">
+            <div class="logo">
+                <img src="Assets/Logo.png" alt="Logo">
+            </div>
+            <div class="sidebar">
+                <div class="wrap" id="wrap-1">
+                    <div class="button home active">
+                        <li><a href="HomePage.html"><i class="fa-solid fa-house"></i>Home</a></li>
+                    </div>
+                    <div class="button recipe">
+                        <li class="active"><a href="#Recipe"><i class="fa-solid fa-clipboard-list"></i></i>Recipe of the Day</a></li>
+                    </div>
+                    <div class="button calendar">
+                        <li><a href="#"><i class="fa-solid fa-calendar-days"></i>Event Calender</a></li>
+                    </div>
+                    <div class="button near-you">
+                        <li><a href="#"><i class="fa-solid fa-location-arrow"></i>Near You</a></li>
+                    </div>
+                    <div class="button activity">
+                        <li><a href="#"><i class="fa-solid fa-clock-rotate-left"></i>Your Activity</a></li>
+                    </div>
+                    <div class="button add-post">
+                        <Button class="add-post-Button" onclick="openAddPost()">+ New Post</Button>
+                    </div>
+                </div>
+                <div class="button" id="logout">
+                    <li><a href=""><i class="fa-solid fa-arrow-right-from-bracket"></i>Logout</a></li>
+                </div>
+            </div>
+        </div>
+        <div class="side-right">
+            <div class="top">
+                <div class="searchbar">
+                    <div class="magnify"><i class="fa-solid fa-magnifying-glass"></i></div>
+                    <input id="search-bar" type="text" placeholder="Search...">
+                </div>
+                <div class="top-wrapper">
+                    <div class="notif-box">
+                        <p class="notif-count">0</p>
+                        <div class="notif"><i class="fa-solid fa-bell"></i></div>
+                    </div>
+                    <div class="profile"><i class="fa-solid fa-user"></i></div>
+                </div>
+            </div>
+            <div class="bottom-2col">
+                <div class="post-container" id="post-container">  
+                    <div class="recipe-container">
+                        <div class="title-container">
+                            <p class="recipe-title">Classic Chicken Consomme</p>
+                        </div>
+                        <div class="ingrehowto-container">
+                            <div class="ingredient-side">
+                                <div class="howto-video" onclick="openVideo(this)">
+                                    <video src="Assets/cookingvid.mp4"></video>
+                                </div>
+                                <div class="ingredient-wrap">   
+                                    <p class="title">Ingredients</p>
+                                    <div class="ingredients">
+                                        <div class="ingre-list" id="ingre1">
+                                            <p class="ingre-name">Unsalted chicken stock</p>
+                                            <p class="ingre-amt">3 quartz</p>
+                                        </div>
+                                        <div class="ingre-list" id="ingre2">
+                                            <p class="ingre-name">Ground chicken</p>
+                                            <p class="ingre-amt">1 pound</p>
+                                        </div>
+                                        <div class="ingre-list" id="ingre3">
+                                            <p class="ingre-name">Chopped white or yellow onion</p>
+                                            <p class="ingre-amt">1 pcs</p>
+                                        </div>
+                                        <div class="ingre-list" id="ingre4">
+                                            <p class="ingre-name">Chopped celery</p>
+                                            <p class="ingre-amt">3 stalks</p>
+                                        </div>
+                                        <div class="ingre-list" id="ingre5">
+                                            <p class="ingre-name">Chopped carrots</p>
+                                            <p class="ingre-amt">2 pcs</p>
+                                        </div>
+                                        <div class="ingre-list" id="ingre6">
+                                            <p class="ingre-name">Chopped parsley</p>
+                                            <p class="ingre-amt">1 bunch</p>
+                                        </div>
+                                        <div class="ingre-list" id="ingre7">
+                                            <p class="ingre-name">Crushed tomatoes</p>
+                                            <p class="ingre-amt">1/2 cup</p>
+                                        </div>
+                                        <div class="ingre-list" id="ingre8">
+                                            <p class="ingre-name">Egg whites</p>
+                                            <p class="ingre-amt">5 pcs</p>
+                                        </div>
+                                        <div class="ingre-list" id="ingre9">
+                                            <p class="ingre-name">White wine</p>
+                                            <p class="ingre-amt">1 cup</p>
+                                        </div>
+                                        <div class="ingre-list" id="ingre10">
+                                            <p class="ingre-name">Salt</p>
+                                            <p class="ingre-amt">A pinch</p>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="howto-side">
+                                <h2 class="title">How to Cook</h2>
+                                <ol class="howto-list">
+                                    <li>Grind or pulse the vegetables and parsley in a meat grinder or food processor. You want it to be finely ground, not a puree. Err on less ground rather than a mush.</li>
+                                    <li>Mix this with the crushed tomatoes, ground chicken, and egg whites.</li>
+                                    <li>Pour the stock into a large stockpot. Add the wine. Stir in the raft mixture. Turn the heat on medium.</li>
+                                    <li>Let this all heat slowly. It should take about 15 to 25 minutes. As it heats, periodically use a wooden spoon, ideally with a flat end, to scrape the bottom of the pot — thhis prevents the egg from scoring on the bottom. At some point the raft will rise to the top. You'll see the egg whites solidify.</li>
+                                    <li>Poke a hole in the center of the raft and let it simmer gently for 30 to 45 minutes. Be careful! Do not let the pot boil. Keep the hole clear so you can see how the consomme is simmering, and to provide it with an outlet. If it gets too hot and breaks the raft apart, you're done for. Keep an eye on it.</li>
+                                    <li>Set a strainer over a large bowl. Set a paper towel in the bowl. Turn the heat off the consomme. Ladle, from the hole in the center,, the consomme from the pot to through the strainer into the bowl. Do this until the raft hits bottom. Sometimes you can tip the pot and get a little more consomme out, but be very careful. Better to leave a little in the pot than to gunk it all up.</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+
+<script src="JS/HomePage.js"></script>
+<script src="JS/component.js"></script>

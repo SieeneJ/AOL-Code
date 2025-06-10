@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Azeret+Mono:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.lineicons.com/5.0/lineicons.css" />
+    <script src="https://kit.fontawesome.com/4a0f595e83.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="CSS/component.css">
+    <title>Eatscapade</title>
+</head>
+
+<body>
+    <div class="content">
+        <div class="side-left">
+            <div class="logo">
+                <img src="Assets/Logo.png" alt="Logo">
+            </div>
+            <div class="sidebar">
+                <div class="wrap" id="wrap-1">
+                    <div class="button home active">
+                        <li class="active"><a href="#home"><i class="fa-solid fa-house"></i>Home</a></li>
+                    </div>
+                    <div class="button recipe">
+                        <li><a href="#"><i class="fa-solid fa-clipboard-list"></i></i>Recipe of the Day</a></li>
+                    </div>
+                    <div class="button calendar">
+                        <li><a href="#"><i class="fa-solid fa-calendar-days"></i>Event Calender</a></li>
+                    </div>
+                    <div class="button near-you">
+                        <li><a href="#"><i class="fa-solid fa-location-arrow"></i>Near You</a></li>
+                    </div>
+                    <div class="button activity">
+                        <li><a href="#"><i class="fa-solid fa-clock-rotate-left"></i>Your Activity</a></li>
+                    </div>
+                    <div class="button add-post">
+                        <Button class="add-post-Button" onclick="openAddPost()">+ New Post</Button>
+                    </div>
+                </div>
+                <div class="button" id="logout">
+                    <li><a href=""><i class="fa-solid fa-arrow-right-from-bracket"></i>Logout</a></li>
+                </div>
+            </div>
+        </div>
+        <div class="side-right">
+            <div class="top">
+                <div class="searchbar">
+                    <div class="magnify"><i class="fa-solid fa-magnifying-glass"></i></div>
+                    <input id="search-bar" type="text" placeholder="Search...">
+                </div>
+                <div class="top-wrapper">
+                    <div class="notif-box">
+                        <p class="notif-count">0</p>
+                        <div class="notif"><i class="fa-solid fa-bell"></i></div>
+                    </div>
+                    <div class="profile"><i class="fa-solid fa-user"></i></div>
+                </div>
+            </div>
+            <div class="bottom">
+                
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

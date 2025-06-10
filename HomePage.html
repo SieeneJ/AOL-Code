@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Azeret+Mono:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.lineicons.com/5.0/lineicons.css" />
+    <script src="https://kit.fontawesome.com/4a0f595e83.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="CSS/component.css">
+    <link rel="stylesheet" href="CSS/HomePage.css">
+    <title>Eatscapade</title>
+</head>
+
+<body>
+    <!-- for video status -->
+    <div class="pop-up video">
+        <div class="popUp-container landscape">
+            <i class="fa-solid fa-xmark" onclick="closeVideo()"></i>
+            <video src="Assets/navbar/video.mp4" controls></video>
+        </div>
+    </div>
+    <div class="pop-up popImage">
+        <div class="popUp-container landscape">
+            <i class="fa-solid fa-xmark" onclick="closeImage()"></i>
+            <img class="poppedImage" src="" alt="">
+        </div>
+    </div>
+    <div class="pop-up add-post">
+        <div class="create-post-container landscape">
+            <div class="form">
+                <div class="form-header">
+                    <i class="fa-solid fa-xmark" onclick="closeAddPost()"></i>
+                    <p class="form-title">Create Post</p>
+                </div>
+                <div class="form-input">
+                    <div class="form-top">
+                        <input type="text" class="inputTitle" id="postTitle" placeholder="Title of your post"></input>
+                        <textarea class="inputText" id="postDescription" placeholder="What's on your mind?"></textarea>
+                    </div>
+                    <div class="form-bottom">
+                        <div class="row" id="top-row">
+                            <div class="location-tag">
+                                <div class="add-location">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                    <p class="location">
+                                        Add Location
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="rating-stars">
+                                <span class="far fa-star star" data-value="1" onclick="starRating(1)"></span>
+                                <span class="far fa-star star" data-value="2" onclick="starRating(2)"></span>
+                                <span class="far fa-star star" data-value="3" onclick="starRating(3)"></span>
+                                <span class="far fa-star star" data-value="4" onclick="starRating(4)"></span>
+                                <span class="far fa-star star" data-value="5" onclick="starRating(5)"></span>
+                            </div>
+                        </div>
+                        <div class="row" id="bottom-row">
+                            <div class="input-icons">
+                                <input type="file" id="mediaFiles" name="mediaFiles" accept="image/*" multiple
+                                    aria-describedby="mediaHelp"></input>
+                                <button type="button" class="upload-btn" id="imageUploadButton">
+                                    <i class="fa-solid fa-image"></i>
+                                </button>
+                            </div>
+                            <input type="button" value="Post" class="input-btn" onclick="submitNewPost()">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="content">
+        <div class="side-left">
+            <div class="logo">
+                <img src="Assets/Logo.png" alt="Logo">
+            </div>
+            <div class="sidebar">
+                <div class="wrap" id="wrap-1">
+                    <div class="button home active">
+                        <li class="active"><a href="#home"><i class="fa-solid fa-house"></i>Home</a></li>
+                    </div>
+                    <div class="button recipe">
+                        <li><a href="RecipeofTheDay.html"><i class="fa-solid fa-clipboard-list"></i></i>Recipe of the
+                                Day</a></li>
+                    </div>
+                    <div class="button calendar">
+                        <li><a href="#"><i class="fa-solid fa-calendar-days"></i>Event Calender</a></li>
+                    </div>
+                    <div class="button near-you">
+                        <li><a href="#"><i class="fa-solid fa-location-arrow"></i>Near You</a></li>
+                    </div>
+                    <div class="button activity">
+                        <li><a href="#"><i class="fa-solid fa-clock-rotate-left"></i>Your Activity</a></li>
+                    </div>
+                    <div class="button add-post">
+                        <Button class="add-post-Button" onclick="openAddPost()">+ New Post</Button>
+                    </div>
+                </div>
+                <div class="button" id="logout">
+                    <li><a href=""><i class="fa-solid fa-arrow-right-from-bracket"></i>Logout</a></li>
+                </div>
+            </div>
+        </div>
+        <div class="side-right">
+            <div class="top">
+                <div class="searchbar">
+                    <div class="magnify"><i class="fa-solid fa-magnifying-glass"></i></div>
+                    <input id="search-bar" type="text" placeholder="Search...">
+                </div>
+                <div class="top-wrapper">
+                    <div class="notif-box">
+                        <p class="notif-count">0</p>
+                        <div class="notif"><i class="fa-solid fa-bell"></i></div>
+                    </div>
+                    <div class="profile"><i class="fa-solid fa-user"></i></div>
+                </div>
+            </div>
+            <div class="bottom-2col">
+                <div class="post-container" id="post-container">
+                    <div class="video-story">
+                        <div class="video-card" id="card1" onclick="openVideo(this)">
+                            <video src="Assets/Jejamuran.mp4"></video>
+                            <div class="user-profile">
+                                <div class="user-pic">
+                                    <i class="fa-solid fa-user"></i>
+                                </div>
+                                <div class="user-info">
+                                    <p class="user-name">User</p>
+                                    <p class="user-desc">XXXX XX</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="video-card" id="card2" onclick="openVideo(this)">
+                            <video src="Assets/cookingvid.mp4"></video>
+                            <div class="user-profile">
+                                <div class="user-pic">
+                                    <i class="fa-solid fa-user"></i>
+                                </div>
+                                <div class="user-info">
+                                    <p class="user-name">User</p>
+                                    <p class="user-desc">XXXX XX</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="video-card" id="card3" onclick="openVideo(this)">
+                            <video src="Assets/Jejamuran.mp4"></video>
+                            <div class="user-profile">
+                                <div class="user-pic">
+                                    <i class="fa-solid fa-user"></i>
+                                </div>
+                                <div class="user-info">
+                                    <p class="user-name">User</p>
+                                    <p class="user-desc">XXXX XX</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="video-card" id="card4" onclick="openVideo(this)">
+                            <video src="Assets/video.mp4"></video>
+                            <div class="user-profile">
+                                <div class="user-pic">
+                                    <i class="fa-solid fa-user"></i>
+                                </div>
+                                <div class="user-info">
+                                    <p class="user-name">User</p>
+                                    <p class="user-desc">XXXX XX</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="video-card" id="card5" onclick="openVideo(this)">
+                            <video src="Assets/Jejamuran.mp4"></video>
+                            <div class="user-profile">
+                                <div class="user-pic">
+                                    <i class="fa-solid fa-user"></i>
+                                </div>
+                                <div class="user-info">
+                                    <p class="user-name">User</p>
+                                    <p class="user-desc">XXXX XX</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="video-card" id="card6" onclick="openVideo(this)">
+                            <video src="Assets/video.mp4"></video>
+                            <div class="user-profile">
+                                <div class="user-pic">
+                                    <i class="fa-solid fa-user"></i>
+                                </div>
+                                <div class="user-info">
+                                    <p class="user-name">User</p>
+                                    <p class="user-desc">XXXX XX</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="video-card" id="card7" onclick="openVideo(this)">
+                            <video src="Assets/Jejamuran.mp4"></video>
+                            <div class="user-profile">
+                                <div class="user-pic">
+                                    <i class="fa-solid fa-user"></i>
+                                </div>
+                                <div class="user-info">
+                                    <p class="user-name">User</p>
+                                    <p class="user-desc">XXXX XX</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="post">
+                        <div class="column" id="column-1">
+                            <div class="post-card" id="post1">
+                                <div class="half" id="half-1">
+                                    <div class="description-container">
+                                        <div class="post-description">
+                                            <h2 class="title">Lipsum: Lorem Ipsum</h2>
+                                            <div class="status">
+                                                <div class="views">
+                                                    <i class="fa fa-eye" aria-hidden="true"></i>
+                                                    <p class="view-count" id="view-count1">
+                                                        9999 views
+                                                    </p>
+                                                </div>
+                                                <div class="read-time">
+                                                    <i class="fa-regular fa-clock"></i>
+                                                    <p class="time">314 minutes read</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="location-section">
+                                            <div class="restaurants-info">
+                                                <p class="restaurant-name">Name of restaurant</p>
+                                                <p class="restaurant-address">Restaurant address</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="half" id="half-2">
+                                    <div class="images image4">
+                                        <div class="image" id="image1" onclick="openImage(this)">
+                                            <img src="Assets/hcmp262490_2238169.jpeg" alt="">
+                                        </div>
+                                        <div class="image" id="image2" onclick="openImage(this)">
+                                            <img src="Assets/images (3).jpeg" alt="">
+                                        </div>
+                                        <div class="image" id="image3" onclick="openImage(this)">
+                                            <img src="Assets/images (4).jpeg" alt="">
+                                        </div>
+                                        <div class="image" id="image4" onclick="openImage(this)">
+                                            <img src="Assets/images (5).jpeg" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="top-section">
+                                        <div class="left">
+                                            <div class="prof-pic">
+                                            </div>
+                                            <div class="user-info">
+                                                <p class="user-name">Username</p>
+                                                <p class="user-tag">@Username</p>
+                                            </div>
+                                        </div>
+                                        <div class="right">
+                                            <i class="fa-solid fa-share"></i>
+                                        </div>
+                                    </div>
+                                    <div class="rating-section">
+                                        <div class="fa-solid fa-star"></div>
+                                        <div class="fa-solid fa-star"></div>
+                                        <div class="fa-solid fa-star"></div>
+                                        <div class="fa-solid fa-star"></div>
+                                        <div class="fa-regular fa-star"></div>
+                                    </div>
+                                    <div class="paragraph-section">
+                                        <p class="paragraph" id="post-paragraph-1">
+                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem dignissimos
+                                            nihil alias inventore. Obcaecati, ratione perferendis quas soluta error, ad
+                                            fugiat odio voluptatum a quibusdam quasi nostrum rem totam iusto assumenda.
+                                            Magni delectus nemo neque aspernatur quo odio repellendus consectetur ut
+                                            iusto error autem non, quibusdam laborum. Deleniti voluptatibus repudiandae
+                                            nostrum veritatis illum impedit architecto quasi debitis enim, aliquam quia
+                                            ullam assumenda incidunt sapiente accusamus voluptas repellat cumque cum
+                                            praesentium alias quas ut molestiae animi nemo? Dolorem nesciunt ipsa
+                                            repellat placeat cumque repellendus dicta assumenda earum deserunt aut at ut
+                                            quis, modi vero aperiam architecto amet culpa voluptates eum et, commodi
+                                            magnam consectetur impedit facilis! Fuga eius commodi necessitatibus ut odio
+                                            repellat sapiente consectetur nihil cumque, assumenda dolorem quidem placeat
+                                            laudantium at optio iusto consequuntur soluta laboriosam veritatis sit eum.
+                                            Est asperiores sit tenetur beatae quia vero, doloremque perspiciatis. Soluta
+                                            incidunt ipsa explicabo quas deleniti laudantium, voluptatem hic sint autem
+                                            ipsam eius omnis, repudiandae exercitationem fugiat ducimus non! Illum
+                                            dolore aliquam ipsum itaque eum atque nemo, iste, minus error tenetur,
+                                            accusamus rem corrupti illo quam nihil enim voluptate voluptatum at
+                                            expedita! Ipsa, totam. Officiis nesciunt laborum voluptatibus, veritatis
+                                            iure reprehenderit neque sed accusamus consectetur fuga minima ullam
+                                            quibusdam necessitatibus consequuntur cum delectus maiores quas assumenda
+                                            est tempore, error architecto sapiente perferendis vitae. Optio debitis
+                                            quisquam sunt, at quae fugit vel nobis reprehenderit repellat nulla
+                                            repudiandae aperiam, fuga soluta dolore consequuntur a velit voluptas? At
+                                            quisquam exercitationem obcaecati excepturi molestiae eos itaque eius quos
+                                            deleniti ducimus iure, soluta harum saepe aspernatur non natus, tempore
+                                            vitae. Dolorum et ea necessitatibus recusandae dignissimos, itaque ad
+                                            obcaecati explicabo! Voluptates aspernatur nam ullam voluptas architecto.
+                                            Explicabo delectus recusandae dolorem ducimus ab omnis modi, cum culpa fugit
+                                            labore, enim veniam accusamus laboriosam nam ratione animi deserunt commodi
+                                            cupiditate perspiciatis eligendi, quos atque sequi. Dolore error distinctio
+                                            aliquam. Necessitatibus facere sit repudiandae aperiam vitae doloremque
+                                            fugiat labore sequi, quaerat libero autem ad ipsum expedita beatae vel,
+                                            nesciunt quos esse! Corporis doloremque possimus consequuntur sapiente vero
+                                            deserunt vitae harum quia nisi aspernatur tempora sed obcaecati,
+                                            reprehenderit nostrum minima optio nobis necessitatibus ex natus cumque
+                                            quas. Ullam laboriosam repellendus sit blanditiis vitae voluptates,
+                                            consectetur fuga in facere aut minima nostrum ipsam possimus? Sint doloribus
+                                            saepe ut ad voluptate at excepturi dolorum debitis minus? Mollitia officiis
+                                            magnam hic culpa dolores minima assumenda in quasi ipsum ipsam error
+                                            laudantium, velit vero adipisci, totam aliquam voluptate minus consectetur
+                                            dignissimos ex alias. Alias nulla, debitis cum consequatur dolor suscipit
+                                            autem, odit doloribus iste consequuntur qui exercitationem animi sed eos
+                                            neque deserunt provident eaque praesentium assumenda libero fugiat ullam et
+                                            recusandae. Quibusdam numquam eius pariatur ratione sequi, repellat a.
+                                            Voluptate harum rem ea maxime molestiae quasi optio sequi? Optio enim quam
+                                            perspiciatis itaque atque debitis consequatur! Veritatis sit odio rem
+                                            cupiditate provident perferendis, eaque at omnis quod veniam dicta ducimus
+                                            excepturi necessitatibus saepe beatae maiores reiciendis itaque obcaecati
+                                            asperiores, laborum atque repellat. Earum quae possimus eveniet. Odio ipsa,
+                                            perferendis odit corporis nemo, maiores voluptatem pariatur doloremque enim
+                                            corrupti esse repudiandae eius, totam consequuntur quis.
+                                        </p>
+                                        <span class="read-more" onclick="toggleReadMore(this)">Read more</span>
+                                    </div>
+                                    <div class="interaction-section">
+                                        <i class="fa-regular fa-heart" id="like1" onclick="toggleLike(1)"></i>
+                                        <i class="fa-solid fa-repeat"></i>
+                                        <i class="fa-regular fa-comment"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="calendar-container">
+                    <div class="calendar"></div>
+                    <div class="event-reminder"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+
+<script src="JS/HomePage.js"></script>
+<script src="JS/component.js"></script>
