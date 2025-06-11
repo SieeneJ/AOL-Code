@@ -15,7 +15,7 @@ body {
     overflow: hidden;
 }
 
-.transparent::before{
+.transparent::before {
     color: transparent;
 }
 
@@ -72,14 +72,14 @@ li.active {
     position: relative;
 }
 
-.top-wrapper .profile{
+.top-wrapper .profile {
     display: flex;
     flex-direction: row;
     align-items: center;
     cursor: pointer;
 }
 
-.notif-box{
+.notif-box {
     position: relative;
     display: flex;
     padding: 1vh 1vw;
@@ -88,7 +88,7 @@ li.active {
     align-items: center;
 }
 
-.notif-box.active{
+.notif-box.active {
     border-radius: 20px;
     width: 70%;
     gap: 2vh;
@@ -96,15 +96,15 @@ li.active {
     border-color: #B11131;
 }
 
-.notif-count{
+.notif-count {
     scale: calc(0);
 }
 
-.notif-count.active{
+.notif-count.active {
     scale: calc(1);
 }
 
-.notif-count.pop{
+.notif-count.pop {
     animation: popNotif 0.5s ease-in-out;
 }
 
@@ -240,15 +240,6 @@ input[type=text]:focus {
     scroll-behavior: smooth;
 }
 
-.calendar-container {
-    width: 35%;
-    border: 1px solid #B11131;
-    position: sticky;
-    top: 0;
-    right: 0;
-}
-
-
 .create-post-container.landscape {
     width: 60vw;
     height: 40vw;
@@ -272,13 +263,13 @@ input[type=text]:focus {
     gap: 2vw;
 }
 
-.form .form-header .fa-solid.fa-xmark{
+.form .form-header .fa-solid.fa-xmark {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.form .form-header p{
+.form .form-header p {
     font-size: 24px;
 }
 
@@ -325,13 +316,17 @@ input[type=text]:focus {
     border: none;
     width: 100%;
     height: 100%;
-    overflow-y: auto; /* Penting: Sembunyikan scrollbar vertikal default */
-    resize: none; /* Matikan kemampuan resize manual oleh pengguna */
-    transition: border-color 0.2s ease-in-out; /* Transisi halus untuk border */
-    box-sizing: border-box; /* Pastikan padding dan border termasuk dalam total width/height */
+    overflow-y: auto;
+    /* Penting: Sembunyikan scrollbar vertikal default */
+    resize: none;
+    /* Matikan kemampuan resize manual oleh pengguna */
+    transition: border-color 0.2s ease-in-out;
+    /* Transisi halus untuk border */
+    box-sizing: border-box;
+    /* Pastikan padding dan border termasuk dalam total width/height */
 }
 
-.form-input .inputText:focus{
+.form-input .inputText:focus {
     border: transparent;
     outline: none;
 }
@@ -416,13 +411,13 @@ input[type=text]:focus {
     display: none;
 }
 
-#bottom-row .input-icons #imageUploadButton{
+#bottom-row .input-icons #imageUploadButton {
     border-color: transparent;
     background-color: transparent;
     color: aliceblue;
 }
 
-.row .input-btn{
+.row .input-btn {
     padding: 10px 20px;
     border-radius: 80px;
     background-color: #D72638;
@@ -475,7 +470,7 @@ input[type=text]:focus {
     gap: 1vh;
 }
 
-.pop-up.active .popUp-container{
+.pop-up.active .popUp-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -490,13 +485,14 @@ input[type=text]:focus {
     height: 40vw;
 }
 
-.pop-up .popUp-container video, .pop-up .popUp-container img {
+.pop-up .popUp-container video,
+.pop-up .popUp-container img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: center center;
 }
 
-.fa-solid.fa-star::before{
+.fa-solid.fa-star::before {
     color: #B11131;
 }

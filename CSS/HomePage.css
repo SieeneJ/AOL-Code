@@ -236,9 +236,15 @@
     font-size: 24px;
 }
 
-.rating-section{
-    padding: 0vh 3vh;
+.column .post-card .rating-section {
+    display: flex; /* Membuat item di dalamnya berbaris horizontal */
+    gap: 0.25rem;   /* Memberi sedikit jarak antar bintang (opsional) */
+    padding: 1vh 3vh; /* Anda sudah punya padding, ini untuk melengkapinya */
 }
+
+/* .rating-section .fa-star{
+    margin: 0 1vh ;
+} */
 
 .column .post-card .images {
     display: grid;
@@ -456,7 +462,7 @@
 }
 
 .post-card .post-description .status .views,
-.post-card .post-description .status .read-time {
+.post-card .post-description .status .post-time {
     display: flex;
     align-items: center;
     gap: 1vh;

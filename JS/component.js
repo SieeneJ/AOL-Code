@@ -2,6 +2,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const notifBox = document.querySelector('.notif-box');
     const notifCount = document.querySelector('.notif-count');
 
+    let currentMonth = new Date().getMonth();
+    let currentYear = new Date().getFullYear();
+
+    renderCalendar(currentMonth, currentYear);
+
     function updateNotif() {
         const audio = new Audio('./Assets/navbar/notif.wav');
         audio.volume = 1;
@@ -88,15 +93,36 @@ function starRating(value) {
     });
 }
 
-function checkLineCount(){
-    const description = document.getElementById('postDescription');
-    const scrollHeight = description.scrollHeight;
-    const lineHeight = 14.4;
+function checkLineCount() {
+    const original = document.getElementById('postDescription');
 
-    console.log(Math.round(scrollHeight / lineHeight));
+    const clone = document.createElement('div');
+    const text = original.value || original.innerText || original.textContent;
+    clone.textContent = text;
 
-    return Math.round(scrollHeight / lineHeight);
+    const style = window.getComputedStyle(original);
+    clone.style.font = style.font;
+    clone.style.lineHeight = style.lineHeight;
+    clone.style.whiteSpace = 'pre-wrap';
+    clone.style.wordWrap = 'break-word';
+    clone.style.visibility = 'hidden';
+    clone.style.position = 'absolute';
+    clone.style.top = '-9999px';
+    clone.style.width = `${original.clientWidth}px`;
 
+    document.body.appendChild(clone);
+
+    let lineHeight = parseFloat(style.lineHeight);
+    if (isNaN(lineHeight)) {
+        lineHeight = parseFloat(style.fontSize) * 1.2;
+    }
+
+    const scrollHeight = clone.scrollHeight;
+    document.body.removeChild(clone);
+
+    const lineCount = Math.round(scrollHeight / lineHeight);
+    console.log(`Estimated lines: ${lineCount}`);
+    return lineCount;
 }
 
 function submitNewPost() {
@@ -135,9 +161,17 @@ function submitNewPost() {
     };
 
     let readMoreHTML = '';
-    if(checkLineCount() >= 4){
+    if (checkLineCount() > 4) {
         readMoreHTML = '<span class="read-more" onclick="toggleReadMore(this)">Read more</span>'
     }
+
+    const now = new Date()
+    const postDate = now.getDate();
+    const postMonth = now.getMonth()+1;
+    const postYear = now.getFullYear();
+    const hourPosted = now.getHours();
+    const minutePosted = now.getMinutes();
+    const postedTime =  `${postDate}-${postMonth}-${postYear} ${hourPosted}:${minutePosted}`;
 
 
     const postHTML = `
@@ -151,22 +185,16 @@ function submitNewPost() {
                                     <i class="fa fa-eye" aria-hidden="true"></i>
                                     <p class="view-count" id="${viewCountId}">0 views</p>
                                 </div>
-                                <div class="read-time">
+                                <div class="post-time">
                                     <i class="fa-regular fa-clock"></i>
-                                    <p class="time">1 minute read</p>
+                                    <p class="time">${postedTime}</p>
                                 </div>
                             </div>
                         </div>
                         <div class="location-section">
                             <div class="restaurants-info">
-                                <div class="right">
-                                    <p class="rating-num">${currentRating.toFixed(1)}</p>
-                                    <i class="fa-solid fa-star"></i>
-                                </div>
-                                <div class="left">
-                                    <p class="restaurant-name">New Restaurant</p>
-                                    <p class="restaurant-address">Unknown Location</p>
-                                </div>
+                                <p class="restaurant-name">Name of restaurant</p>
+                                <p class="restaurant-address">Restaurant address</p>
                             </div>
                         </div>
                     </div>

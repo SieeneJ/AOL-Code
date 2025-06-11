@@ -347,13 +347,13 @@ function generateRatingPost(username, tag, restaurantName, address, ratingText, 
     document.getElementById('column-2').appendChild(postCard);
 }
 
-document.addEventListener("input", function (event) {
-    if (event.target.classList.contains("inputText")) {
-        autoResizeTextarea(event.target);
-    }
-});
+// document.addEventListener("input", function (event) {
+//     if (event.target.classList.contains("inputText")) {
+//         autoResizeTextarea(event.target);
+//     }
+// });
 
-function autoResizeTextarea(textarea) {
-    textarea.style.height = "auto"; // Reset height
-    textarea.style.height = (textarea.scrollHeight) + "px"; // Set new height
-}
+// function autoResizeTextarea(textarea) {
+//     textarea.style.height = "auto"; // Reset height
+//     textarea.style.height = (textarea.scrollHeight) + "px"; // Set new height
+// }

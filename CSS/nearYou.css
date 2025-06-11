@@ -1,0 +1,331 @@
+.bottom {
+    height: 80vh;
+    position: relative;
+    display: flex;
+    background-color: #F9E6E6;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.near-you-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.view-toggle {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    display: flex;
+    background-color: rgba(217, 38, 56, 0.9);
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.toggle-btn {
+    padding: 8px 16px;
+    border: none;
+    background: transparent;
+    color: white;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.toggle-btn.active {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.map-view, .list-view {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.list-view {
+    display: none;
+    padding: 20px 20px 80px 20px;
+    overflow-y: auto;
+    height: 100%;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.list-view.active {
+    display: block;
+}
+
+.map-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+#leaflet-map {
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+}
+
+.custom-marker {
+    width: 40px;
+    height: 40px;
+    background-color: #D72638;
+    border-radius: 50%;
+    border: 3px solid white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+
+.custom-marker:hover {
+    transform: scale(1.1);
+}
+
+.user-location-marker {
+    width: 16px;
+    height: 16px;
+    background-color: #4285F4;
+    border-radius: 50%;
+    border: 2px solid white;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.map-controls {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+}
+
+.control-btn {
+    display: block;
+    width: 45px;
+    height: 45px;
+    background-color: #D72638;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.control-btn:hover {
+    background-color: #B11131;
+    transform: scale(1.1);
+}
+
+.control-btn.menu-toggle {
+    background-color: #333;
+    position: relative;
+}
+
+.control-btn.menu-toggle:before {
+    content: "\2630";
+    font-size: 18px;
+}
+
+.list-controls {
+    position: absolute;
+    bottom: 10px;
+    left: 20px;
+    z-index: 1000;
+    display: none;
+}
+
+.list-view.active ~ .list-controls {
+    display: block;
+}
+
+.list-control-btn {
+    width: 45px;
+    height: 45px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.list-control-btn:hover {
+    background-color: #555;
+    transform: scale(1.1);
+}
+
+.list-control-btn.map-toggle:before {
+    content: "🗺️";
+    font-size: 16px;
+}
+
+.leaflet-popup-content-wrapper {
+    font-family: "Azeret Mono", monospace;
+}
+
+.custom-popup {
+    padding: 10px;
+    min-width: 200px;
+}
+
+.custom-popup h3 {
+    margin: 0 0 5px 0;
+    color: #D72638;
+    font-size: 16px;
+}
+
+.custom-popup p {
+    margin: 0 0 5px 0;
+    color: #666;
+    font-size: 14px;
+}
+
+.custom-popup .popup-meta {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8px;
+}
+
+.custom-popup .rating {
+    color: #FF9B22;
+    font-weight: bold;
+}
+
+.custom-popup .distance {
+    color: #999;
+    font-size: 12px;
+}
+
+.section-header {
+    background-color: #D72638;
+    color: white;
+    padding: 15px 20px;
+    margin: -20px -20px 20px -20px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.restaurant-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.restaurant-card {
+    background-color: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.restaurant-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.restaurant-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.restaurant-details h3 {
+    color: #D72638;
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+
+.restaurant-details p {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.restaurant-meta {
+    text-align: right;
+    color: #999;
+    font-size: 12px;
+}
+
+.rating {
+    color: #FF9B22;
+    font-weight: bold;
+}
+
+.distance {
+    margin-top: 5px;
+}
+
+@media (max-width: 768px) {
+    .side-left {
+        min-width: 25%;
+    }
+    
+    .side-right {
+        max-width: 75%;
+    }
+    
+    .view-toggle {
+        top: 10px;
+        right: 10px;
+        padding: 3px;
+    }
+    
+    .toggle-btn {
+        padding: 6px 12px;
+        font-size: 14px;
+    }
+    
+    .map-controls {
+        bottom: 10px;
+        left: 10px;
+    }
+    
+    .control-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 14px;
+    }
+    
+    .list-controls {
+        bottom: 5px;
+        left: 10px;
+    }
+    
+    .list-control-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 14px;
+    }
+    
+    .restaurant-card {
+        padding: 15px;
+    }
+    
+    .restaurant-details h3 {
+        font-size: 16px;
+    }
+    
+    .restaurant-details p {
+        font-size: 13px;
+    }
+}

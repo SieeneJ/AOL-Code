@@ -12,6 +12,7 @@
     <script src="https://kit.fontawesome.com/4a0f595e83.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="CSS/component.css">
     <link rel="stylesheet" href="CSS/HomePage.css">
+    <link rel="stylesheet" href="CSS/calendar.css">
     <title>Eatscapade</title>
 </head>
 
@@ -92,7 +93,7 @@
                         <li><a href="#"><i class="fa-solid fa-calendar-days"></i>Event Calender</a></li>
                     </div>
                     <div class="button near-you">
-                        <li><a href="#"><i class="fa-solid fa-location-arrow"></i>Near You</a></li>
+                        <li><a href="nearYou.html"><i class="fa-solid fa-location-arrow"></i>Near You</a></li>
                     </div>
                     <div class="button activity">
                         <li><a href="#"><i class="fa-solid fa-clock-rotate-left"></i>Your Activity</a></li>
@@ -222,9 +223,9 @@
                                                         9999 views
                                                     </p>
                                                 </div>
-                                                <div class="read-time">
+                                                <div class="post-time">
                                                     <i class="fa-regular fa-clock"></i>
-                                                    <p class="time">314 minutes read</p>
+                                                    <p class="time">11-12-2024 17:19</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -338,9 +339,43 @@
                         </div>
                     </div>
                 </div>
-                <div class="calendar-container">
-                    <div class="calendar"></div>
-                    <div class="event-reminder"></div>
+                <div class="calendar-event">
+                    <div class="calendar-container">
+                        <div class="calendar-header">
+                            <button id="prevMonth">&lt;</button>
+                            <h2 id="monthAndYear"></h2>
+                            <button id="nextMonth">&gt;</button>
+                        </div>
+                        <div class="calendar-weekdays">
+                            <div>Sun</div>
+                            <div>Mon</div>
+                            <div>Tue</div>
+                            <div>Wed</div>
+                            <div>Thu</div>
+                            <div>Fri</div>
+                            <div>Sat</div>
+                        </div>
+                        <div class="calendar-days" id="calendarDays"></div>
+                    </div>
+                    <div id="eventPanel" class="event-panel">
+                        <div class="event-date"><span id="selectedDate">9 May 2025</span></div>
+
+                        <div class="event-item">
+                            <img src="Assets/ChefHat.png" class="event-icon">
+                            <div class="event-detail">
+                                <div class="event-title">Recipe of the Day</div>
+                                <div class="event-desc">Classic Chicken Consommé</div>
+                            </div>
+                        </div>
+
+                        <div class="event-item">
+                            <img src="Assets/calendar.png" class="event-icon">
+                            <div class="event-detail">
+                                <div class="event-title">FoodFest '25</div>
+                                <div class="event-desc">Address, 00:00-00:00</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -351,3 +386,4 @@
 
 <script src="JS/HomePage.js"></script>
 <script src="JS/component.js"></script>
+<script src="JS/calendarRender.js"></script>
