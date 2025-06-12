@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
+    let currentRating = 0; // Set this in starRating()
 
     let currentMonth = new Date().getMonth();
     let currentYear = new Date().getFullYear();
@@ -7,6 +8,14 @@ document.addEventListener("DOMContentLoaded", () => {
     scheduleNotif();
 });
 renderCalendar(currentMonth, currentYear);
+
+window.addEventListener('DOMContentLoaded', () => {
+    const fileInput = document.getElementById('mediaFiles');
+    const uploadButton = document.getElementById('imageUploadButton');
+    uploadButton.addEventListener('click', () => {
+        fileInput.click();
+    });
+});
 
 function updateNotif() {
     const notifBox = document.querySelector('.notif-box');
@@ -45,13 +54,6 @@ function scheduleNotif() {
 }
 
 
-window.addEventListener('DOMContentLoaded', () => {
-    const fileInput = document.getElementById('mediaFiles');
-    const uploadButton = document.getElementById('imageUploadButton');
-    uploadButton.addEventListener('click', () => {
-        fileInput.click();
-    });
-});
 
 let selectedRating = 0;
 function resetStarRating() {
@@ -92,17 +94,16 @@ window.toggleNotifBox = function () {
     }, 400); // Match CSS animation duration
 };
 
-window.openAddPost = function () {
+function openAddPost() {
     document.querySelector('.pop-up.add-post').classList.add('active');
 }
 
-window.closeAddPost = function () {
+function closeAddPost() {
     document.querySelector('.pop-up.add-post').classList.remove('active');
     resetStarRating();
 }
 
 // let postCounter = 1; // Keep track of post IDs
-let currentRating = 0; // Set this in starRating()
 function starRating(value) {
     currentRating = value;
     const stars = document.querySelectorAll('.star');
