@@ -96,6 +96,10 @@ li.active {
     border-color: #B11131;
 }
 
+.notif-box:hover{
+    cursor: pointer;
+}
+
 .notif-count {
     scale: calc(0);
 }
@@ -238,6 +242,7 @@ input[type=text]:focus {
     /* hide scrollbar (Firefox) */
     user-select: none;
     scroll-behavior: smooth;
+    gap: 20px;
 }
 
 .create-post-container.landscape {
@@ -304,8 +309,8 @@ input[type=text]:focus {
 .form-input .inputTitle {
     padding: 0;
     font-size: 20px;
+    color: #B11131;
 }
-
 
 .form-input .inputText {
     padding: 0;
@@ -350,6 +355,24 @@ input[type=text]:focus {
 .form-bottom .row .location-tag {
     display: flex;
     gap: 1%;
+    align-items: center;
+}
+
+.location-input{
+    display: none;
+}
+
+.location-input.active{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+}
+
+.location-tag .restaurantName, .location-tag .restaurantLocation{
+    padding: 0;
+    font-size: 12px;
+    color: #D72638;
 }
 
 .form-bottom .row .location-tag .add-location,
@@ -363,6 +386,10 @@ input[type=text]:focus {
     padding: 5px 15px;
     gap: 10px;
     width: 20vh
+}
+
+.form-bottom .row .location-tag .add-location:hover{
+    cursor: pointer;
 }
 
 .form-bottom .row .location-tag .add-location i::before,
@@ -495,4 +522,98 @@ input[type=text]:focus {
 
 .fa-solid.fa-star::before {
     color: #B11131;
+}
+
+.pop-up.active .notif-pop-container.landscape {
+    width: 30vw;
+    height: auto;
+    max-height: 60vh;
+    min-height: 60vh;
+    padding: 2vw;
+    gap: 1vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.pop-up.active .notif-pop-container{
+    display: flex;
+    flex-direction: column;
+    background-color: #F1DADA;
+    padding: 2vh;
+    border-radius: 10px;
+}
+
+.notif-header {
+    display: flex;
+    align-items: center;
+    color: #B11131;
+    gap: 1vw;
+}
+
+.notif-card {
+    display: flex;
+    justify-content: space-between;
+    background-color: #F9E6E6;
+    padding: 2% 4%;
+    border-radius: 5px;
+}
+
+.notif-card .left{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 5%;
+}
+
+.notif-card .notif-pic i {
+    color: #D72638;
+}
+
+.notif-card .notif-desc{
+    display: flex;
+    flex-direction: column;
+}
+
+.notif-card .notif-desc .user-name{
+    font-weight: bold;
+}
+
+.notif-card .notif-desc p{
+    font-size: 16px;
+    color: #D72638;
+}
+
+.notif-card .notif-time .time-text{
+    font-size: 12px;
+    color: #E37070;
+}
+
+.pop-up.active .notif-pop-container.landscape::-webkit-scrollbar {
+    width: 6px;
+}
+
+.pop-up.active .notif-pop-container.landscape::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+
+.pop-up.active .notif-pop-container.landscape::-webkit-scrollbar-thumb {
+    background: #D72638;
+    border-radius: 3px;
+}
+
+.pop-up.active .notif-pop-container.landscape::-webkit-scrollbar-thumb:hover {
+    background: #B11131;
+}
+
+.notif-text.active {
+    display: flex;
+    justify-content: center;
+    opacity: 30%;
+    height: fit-content;
+}
+
+.notif-text {
+    opacity: 0%;
+    height: 0;
 }

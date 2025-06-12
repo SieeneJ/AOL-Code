@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Azeret+Mono:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.lineicons.com/5.0/lineicons.css" />
+    <script src="https://kit.fontawesome.com/4a0f595e83.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="CSS/Login.css">
+    <title>Eatscapade</title>
+</head>
+
+<body>
+    <div class="login-photo-container">
+        <img src="Assets/cover.jpg" height="800" width="600"></image>
+        <div class="cover-overlay"></div>
+    </div>
+    <div class="login-form-container">
+        <div class="login-form-wrapper">
+            <div class="logo">
+                <img src="Assets/Logo.png">
+            </div>
+            <h1 id="login-text">Login</h1>
+            <form id="loginForm" novalidate>
+                <div class="form-element">
+                    <h3 class="form-label">Username</h3>
+                    <input autocomplete="username" id="loginUsername" name="loginUsername" placeholder="Username..." required type="text"/>
+                </div>
+                <div class="form-element">
+                    <h3 class="form-label">Password</h3>
+                    <input autocomplete="pw" id="loginPassword" name="loginPassword" placeholder="Password..." required type="password"/>
+                </div>
+                <div class="form-bottom">
+                    <input id="remember-me" name="remember" type="checkbox"/>
+                    <span id="rmbr-label">Remember Me</span>
+                    <a href="#" tabindex="0"> Forgot Password?</a>
+                </div>
+                <button type="submit">Login</button>
+            </form>
+            <div class="regist-button">
+                <span id="dhac">Don't have an account?</span>
+                <button id="showForm" type="button">Register here.</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- regis -->
+    <div class="regist-overlay" id="toggleOverlay">
+        <div class="regist-content">
+            <button class="close-regist-button" id="closeForm" type="button">
+                <i class="fas fa-times"></i>
+            </button>
+            <h2 id="regist-text">Register</h2>
+            <form id="registerForm" novalidate>
+                <div class="form-element">
+                    <h3 class="form-label">Username</h3>
+                    <input autocomplete="username" id="registerUsername" name="registerUsername" placeholder="Username..." required type="text"/>
+                </div>
+                <div class="form-element">
+                    <h3 class="form-label">Password</h3>
+                    <input autocomplete="password" id="registerPassword" name="registerPassword" placeholder="Password..." required type="password"/>
+                </div>
+                <button type="submit" id="regist-button">Register</button>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
+<script src="JS/Login.js"></script>

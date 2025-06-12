@@ -45,11 +45,17 @@
                     <div class="form-bottom">
                         <div class="row" id="top-row">
                             <div class="location-tag">
-                                <div class="add-location">
+                                <div class="add-location" onclick="toggleLocation()">
                                     <i class="fa-solid fa-location-dot"></i>
                                     <p class="location">
                                         Add Location
                                     </p>
+                                </div>
+                                <div class="location-input">
+                                    <input type="text" name="restaurantName" id="restaurantName" class="restaurantName"
+                                        placeholder="restaurant name (optional)">
+                                    <input type="text" name="restaurantLocation" id="restaurantLocation"
+                                        class="restaurantLocation" placeholder="restaurant location (optional)">
                                 </div>
                             </div>
                             <div class="rating-stars">
@@ -75,6 +81,15 @@
             </div>
         </div>
     </div>
+    <div class="pop-up popNotif">
+        <div class="notif-pop-container landscape">
+            <div class="notif-header">
+                <i class="fa-solid fa-xmark" onclick="closeNotif()"></i>
+                <h3 class="header-text">Notifications</h3>
+            </div>
+            <p class="notif-text active">No Notifications</p>
+        </div>
+    </div>
     <div class="content">
         <div class="side-left">
             <div class="logo">
@@ -86,24 +101,20 @@
                         <li class="active"><a href="#home"><i class="fa-solid fa-house"></i>Home</a></li>
                     </div>
                     <div class="button recipe">
-                        <li><a href="RecipeofTheDay.html"><i class="fa-solid fa-clipboard-list"></i></i>Recipe of the
-                                Day</a></li>
+                        <li><a href="RecipeofTheDay.html"><i class="fa-solid fa-clipboard-list"></i></i>Recipe of the Day</a></li>
                     </div>
                     <div class="button calendar">
-                        <li><a href="#"><i class="fa-solid fa-calendar-days"></i>Event Calender</a></li>
+                        <li><a href="eventCalendar.html"><i class="fa-solid fa-calendar-days"></i>Event Calender</a></li>
                     </div>
                     <div class="button near-you">
                         <li><a href="nearYou.html"><i class="fa-solid fa-location-arrow"></i>Near You</a></li>
-                    </div>
-                    <div class="button activity">
-                        <li><a href="#"><i class="fa-solid fa-clock-rotate-left"></i>Your Activity</a></li>
                     </div>
                     <div class="button add-post">
                         <Button class="add-post-Button" onclick="openAddPost()">+ New Post</Button>
                     </div>
                 </div>
                 <div class="button" id="logout">
-                    <li><a href=""><i class="fa-solid fa-arrow-right-from-bracket"></i>Logout</a></li>
+                    <li><a href="Login.html"><i class="fa-solid fa-arrow-right-from-bracket"></i>Logout</a></li>
                 </div>
             </div>
         </div>
@@ -114,7 +125,7 @@
                     <input id="search-bar" type="text" placeholder="Search...">
                 </div>
                 <div class="top-wrapper">
-                    <div class="notif-box">
+                    <div class="notif-box" onclick="openNotif()">
                         <p class="notif-count">0</p>
                         <div class="notif"><i class="fa-solid fa-bell"></i></div>
                     </div>
@@ -339,40 +350,48 @@
                         </div>
                     </div>
                 </div>
-                <div class="calendar-event">
-                    <div class="calendar-container">
+                <div class="calendar-section">
+                    <div class="calendar-widget">
                         <div class="calendar-header">
-                            <button id="prevMonth">&lt;</button>
-                            <h2 id="monthAndYear"></h2>
-                            <button id="nextMonth">&gt;</button>
+                            <h3 id="calendar-title">May 2025</h3>
+                            <div class="nav-buttons">
+                                <button class="nav-btn" id="prev-month"></button>
+                                <button class="nav-btn" id="next-month"></button>
+                            </div>
                         </div>
-                        <div class="calendar-weekdays">
-                            <div>Sun</div>
-                            <div>Mon</div>
-                            <div>Tue</div>
-                            <div>Wed</div>
-                            <div>Thu</div>
-                            <div>Fri</div>
-                            <div>Sat</div>
-                        </div>
-                        <div class="calendar-days" id="calendarDays"></div>
-                    </div>
+                        <div class="calendar-grid">
+                            <div class="calendar-days">
+                                <div class="day-header">Sun</div>
+                                <div class="day-header">Mon</div>
+                                <div class="day-header">Tue</div>
+                                <div class="day-header">Wed</div>
+                                <div class="day-header">Thu</div>
+                                <div class="day-header">Fri</div>
+                                <div class="day-header">Sat</div>
+                            </div>
+                            <div class="calendar-dates" id="calendar-dates"></div>
                     <div id="eventPanel" class="event-panel">
-                        <div class="event-date"><span id="selectedDate">9 May 2025</span></div>
-
+                        <div class="event-date">
+                            <span id="selectedDate">9 May 2025</span>
+                        </div>
                         <div class="event-item">
-                            <img src="Assets/ChefHat.png" class="event-icon">
                             <div class="event-detail">
                                 <div class="event-title">Recipe of the Day</div>
                                 <div class="event-desc">Classic Chicken Consommé</div>
+                                <div class="event-time">
+                                    <span class="time-badge">09:00</span>
+                                    <span class="status-badge cooking">Cooking</span>
+                                </div>
+                                <div class="event-location">Address, 09:00-11:00</div>
                             </div>
                         </div>
-
                         <div class="event-item">
-                            <img src="Assets/calendar.png" class="event-icon">
                             <div class="event-detail">
                                 <div class="event-title">FoodFest '25</div>
-                                <div class="event-desc">Address, 00:00-00:00</div>
+                                <div class="event-time">
+                                    <span class="status-badge paid-event">PAID EVENT</span>
+                                </div>
+                                <div class="event-location">Address, 00:00-00:00</div>
                             </div>
                         </div>
                     </div>
@@ -386,4 +405,4 @@
 
 <script src="JS/HomePage.js"></script>
 <script src="JS/component.js"></script>
-<script src="JS/calendarRender.js"></script>
+<script src="JS/calendar.js"></script>

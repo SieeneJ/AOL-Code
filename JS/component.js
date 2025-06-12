@@ -1,32 +1,49 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const notifBox = document.querySelector('.notif-box');
-    const notifCount = document.querySelector('.notif-count');
 
     let currentMonth = new Date().getMonth();
     let currentYear = new Date().getFullYear();
 
-    renderCalendar(currentMonth, currentYear);
-
-    function updateNotif() {
-        const audio = new Audio('./Assets/navbar/notif.wav');
-        audio.volume = 1;
-        audio.preload = 'auto';
-        const currentCount = parseInt(notifCount.textContent) || 0;
-        const newCount = currentCount + 1;
-        notifCount.textContent = newCount;
-
-        audio.play();
-        notifBox.classList.add('active');
-        notifCount.classList.add('active');
-        notifCount.classList.add('pop');
-
-        setTimeout(() => {
-            notifCount.classList.remove('pop');
-        }, 300);
-    }
-
-    setInterval(updateNotif, 20000); // Every 20 seconds
+    // Start notifications
+    scheduleNotif();
 });
+renderCalendar(currentMonth, currentYear);
+
+function updateNotif() {
+    const notifBox = document.querySelector('.notif-box');
+    const notifCount = document.querySelector('.notif-count');
+    const audio = new Audio('./Assets/navbar/notif.wav');
+    audio.volume = 1;
+    audio.preload = 'auto';
+    const currentCount = parseInt(notifCount.textContent) || 0;
+    const newCount = currentCount + 1;
+    notifCount.textContent = newCount;
+
+    audio.play();
+    notifBox.classList.add('active');
+    notifCount.classList.add('active');
+    notifCount.classList.add('pop');
+
+    setTimeout(() => {
+        notifCount.classList.remove('pop');
+    }, 300);
+
+    const notifHeader = document.querySelector('.notif-pop-container.landscape');
+    const notifElement = generateNotif();  // get the returned element
+    notifHeader.append(notifElement); // append it
+}
+
+function scheduleNotif() {
+    const minDelay = 30000;     // 30 seconds
+    const maxDelay = 300000;    // 1 minutes
+    const randomDelay = Math.floor(Math.random() * (maxDelay - minDelay + 1)) + minDelay;
+    // console.log(minDelay)
+
+    setTimeout(() => {
+        updateNotif();
+        scheduleNotif(); // Recursively schedule next one
+    }, randomDelay);
+}
+
 
 window.addEventListener('DOMContentLoaded', () => {
     const fileInput = document.getElementById('mediaFiles');
@@ -37,21 +54,6 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 
 let selectedRating = 0;
-
-function starRating(rating) {
-    const stars = document.querySelectorAll('.rating-stars .star');
-
-    stars.forEach((star, index) => {
-        if (index < rating) {
-            star.classList.remove("far");
-            star.classList.add("fas");
-        } else {
-            star.classList.remove("fas");
-            star.classList.add("far");
-        }
-    });
-}
-
 function resetStarRating() {
     const stars = document.querySelectorAll('.rating-stars .star');
     stars.forEach((star) => {
@@ -60,8 +62,26 @@ function resetStarRating() {
     });
 }
 
+function toggleLocation() {
+    const locationTxt = document.querySelector('.location-input');
+    const locationBtn = document.querySelector('.location');
+    const restaurantName = document.querySelector('.restaurantName');
+    const restaurantLocation = document.querySelector('.restaurantLocation');
+
+    if (locationTxt.classList.contains('active')) {
+        locationTxt.classList.remove('active');
+        locationBtn.textContent = 'Add Location';
+        restaurantName.value = '';
+        restaurantLocation.value = '';
+    }
+    else {
+        locationTxt.classList.add('active');
+        locationBtn.textContent = 'Remove Location';
+    }
+}
+
 window.toggleNotifBox = function () {
-    const notifBox = document.querySelector('notif-box');
+    const notifBox = document.querySelector('.notif-box');
 
     notifBox.classList.toggle('active');
     notifBox.classList.add('pop');
@@ -83,7 +103,6 @@ window.closeAddPost = function () {
 
 // let postCounter = 1; // Keep track of post IDs
 let currentRating = 0; // Set this in starRating()
-
 function starRating(value) {
     currentRating = value;
     const stars = document.querySelectorAll('.star');
@@ -165,14 +184,27 @@ function submitNewPost() {
         readMoreHTML = '<span class="read-more" onclick="toggleReadMore(this)">Read more</span>'
     }
 
+    let locationInfo = '';
+    const locationInput = document.querySelector('.location-input');
+    if (locationInput.classList.contains('active')) {
+        const locName = document.querySelector('.restaurantName').value.trim();
+        const locAddress = document.querySelector('.restaurantLocation').value.trim();
+        console.log(locName, locAddress);
+        if (locName == '' || locAddress == '') {
+            alert('Please input the restaurant name or restaurant address');
+            return;
+        }
+        locationInfo = `<p class="restaurant-name">${locName}</p>
+                                <p class="restaurant-address">${locAddress}</p>`;
+    }
+
     const now = new Date()
     const postDate = now.getDate();
-    const postMonth = now.getMonth()+1;
+    const postMonth = now.getMonth() + 1;
     const postYear = now.getFullYear();
     const hourPosted = now.getHours();
     const minutePosted = now.getMinutes();
-    const postedTime =  `${postDate}-${postMonth}-${postYear} ${hourPosted}:${minutePosted}`;
-
+    const postedTime = `${postDate}-${postMonth}-${postYear} ${hourPosted}:${minutePosted}`;
 
     const postHTML = `
             <div class="post-card" id="${postId}">
@@ -193,8 +225,7 @@ function submitNewPost() {
                         </div>
                         <div class="location-section">
                             <div class="restaurants-info">
-                                <p class="restaurant-name">Name of restaurant</p>
-                                <p class="restaurant-address">Restaurant address</p>
+                                ${locationInfo}
                             </div>
                         </div>
                     </div>
@@ -238,13 +269,16 @@ function submitNewPost() {
     document.getElementById('postTitle').value = '';
     document.getElementById('postDescription').value = '';
     document.getElementById('mediaFiles').value = '';
+    document.querySelector('.location-input').classList.remove('active');
+    document.querySelector('.location').textContent = 'Add Location'
+    document.querySelector('.restaurantName').value = '';
+    document.querySelector('.restaurantLocation').value = '';
     currentRating = 0;
     starRating(0);
 
     // Close popup
     closeAddPost();
 }
-
 
 function getLastID() {
     const posts = document.querySelectorAll('.post-card');
@@ -255,4 +289,43 @@ function getLastID() {
     })
 
     return lastID;
+}
+
+function generateNotif() {
+    const notifCard = document.createElement('div');
+    const now = new Date();
+    const notifHour = now.getHours().toString().padStart(2, '0');
+    const notifMinute = now.getMinutes().toString().padStart(2, '0');
+
+    const notifText = document.querySelector('.notif-text');
+    notifText.classList.remove('active');
+
+    notifCard.classList.add('notif-card');
+
+    notifCard.innerHTML = `
+        <div class="left">
+            <div class="notif-pic">
+                <i class="fa-solid fa-user"></i>
+            </div>
+            <div class="notif-desc">
+                <p class="user-name">Username</p>
+                <p class="desc-text">Your friend has posted a new post</p>
+            </div>
+        </div>
+        <div class="notif-time">
+            <p class="time-text">${notifHour}:${notifMinute}</p>
+        </div>
+    `;
+
+    return notifCard;
+}
+
+function openNotif() {
+    const popUp = document.querySelector('.pop-up.popNotif');
+    popUp.classList.add('active');
+}
+
+function closeNotif() {
+    const popUp = document.querySelector('.pop-up.popNotif');
+    popUp.classList.remove('active');
 }
