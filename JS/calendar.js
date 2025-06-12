@@ -11,6 +11,31 @@ const months = [
     'July', 'August', 'September', 'October', 'November', 'December'
 ];
 
+document.addEventListener('DOMContentLoaded', function() {
+    generateCalendar(currentMonth, currentYear);
+    changeEvents();
+
+    document.getElementById('search-bar').addEventListener('input', function() {
+        const searchTerm = this.value.toLowerCase();
+        const eventCards = document.querySelectorAll('.event-card');
+        
+        eventCards.forEach(card => {
+            const title = card.querySelector('h3').textContent.toLowerCase();
+            const description = card.querySelector('.event-description').textContent.toLowerCase();
+            const address = card.querySelector('.event-address').textContent.toLowerCase();
+            
+            if (title.includes(searchTerm) || description.includes(searchTerm) || address.includes(searchTerm)) {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    });
+
+});
+
+
+
 function generateCalendar(month, year) {
     const calendarDates = document.getElementById('calendar-dates');
     const calendarTitle = document.getElementById('calendar-title');
@@ -63,32 +88,6 @@ function navigateMonth(direction) {
     }
     generateCalendar(currentMonth, currentYear);
 }
-
-document.addEventListener('DOMContentLoaded', function() {
-    generateCalendar(currentMonth, currentYear);
-    changeEvents();
-
-    document.getElementById('prev-month').addEventListener('click', () => navigateMonth(-1));
-    document.getElementById('next-month').addEventListener('click', () => navigateMonth(1));
-
-    document.getElementById('search-bar').addEventListener('input', function() {
-        const searchTerm = this.value.toLowerCase();
-        const eventCards = document.querySelectorAll('.event-card');
-        
-        eventCards.forEach(card => {
-            const title = card.querySelector('h3').textContent.toLowerCase();
-            const description = card.querySelector('.event-description').textContent.toLowerCase();
-            const address = card.querySelector('.event-address').textContent.toLowerCase();
-            
-            if (title.includes(searchTerm) || description.includes(searchTerm) || address.includes(searchTerm)) {
-                card.style.display = 'block';
-            } else {
-                card.style.display = 'none';
-            }
-        });
-    });
-
-});
 
 function changeEvents() {
   const selectedDate = new Date(selectedYear, selectedMonth, selectedDay);
