@@ -9,13 +9,13 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 renderCalendar(currentMonth, currentYear);
 
-window.addEventListener('DOMContentLoaded', () => {
+function uploadImage() {
     const fileInput = document.getElementById('mediaFiles');
     const uploadButton = document.getElementById('imageUploadButton');
     uploadButton.addEventListener('click', () => {
         fileInput.click();
     });
-});
+}
 
 function updateNotif() {
     const notifBox = document.querySelector('.notif-box');
