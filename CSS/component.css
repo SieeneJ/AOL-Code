@@ -169,6 +169,7 @@ li.active {
     background-color: #D72638;
     color: aliceblue;
     border-color: transparent;
+    cursor: pointer;
 }
 
 .content {
@@ -442,6 +443,7 @@ input[type=text]:focus {
     border-color: transparent;
     background-color: transparent;
     color: aliceblue;
+    cursor: pointer;
 }
 
 .row .input-btn {
@@ -450,6 +452,7 @@ input[type=text]:focus {
     background-color: #D72638;
     color: aliceblue;
     border-color: transparent;
+    cursor: pointer;
 }
 
 .pop-up {
