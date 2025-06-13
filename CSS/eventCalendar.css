@@ -53,6 +53,14 @@
     background-color: #B11131;
     position: relative;
     margin-bottom: 0;
+    overflow: hidden;
+}
+
+.event-image img{
+    height: auto;
+    width: 100%;
+    object-fit: contain;
+    object-position: center center;
 }
 
 .event-tag {
